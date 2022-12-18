@@ -3,7 +3,7 @@ import { useAuth } from '../../providers/AuthStore';
 import { useArticle } from '../../providers/ArticleStore';
 import { useForm } from "react-hook-form";
 
-function Navbar(props) {
+function NewPostForm(props) {
   const { token } = useContext(useAuth);
   const { categories } = useContext(useArticle);
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -87,4 +87,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default NewPostForm;

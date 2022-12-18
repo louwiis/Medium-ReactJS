@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-function Navbar(props) {
+function RegisterForm(props) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { setShowModal, setModalMode } = props;
 
@@ -104,4 +104,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default RegisterForm;

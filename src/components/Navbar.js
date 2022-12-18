@@ -112,15 +112,16 @@ function Navbar() {
                             </span>
                           )}
                         </Menu.Item>
-                        {/* <Menu.Item>
+                        <Menu.Item>
                           {({ active }) => (
                             <span
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              onClick={() => {setModalMode('changePassword'); setShowModal(true);}}
                             >
-                              Settings
+                              Change password
                             </span>
                           )}
-                        </Menu.Item> */}
+                        </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <span

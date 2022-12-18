@@ -14,7 +14,6 @@ export function ArticleProvider(props) {
     .then((data) => {
       setArticles(data.data);
       setPages(Math.ceil(data.count/10));
-      console.log(data.data);
     });
   }
   

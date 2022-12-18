@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from './forms/LoginForm';
 import RegisterForm from './forms/RegisterForm';
 import NewPostForm from './forms/NewPostForm';
+import ChangePasswordForm from './forms/ChangePasswordForm';
 
 
 function Navbar(props) {
@@ -31,8 +32,9 @@ function Navbar(props) {
                 <RegisterForm setShowModal={setShowModal} setModalMode={setModalMode} />
               ) : modalMode === 'newPost' ? (
                 <NewPostForm setShowModal={setShowModal} />
+              ) : modalMode === 'changePassword' ? (
+                <ChangePasswordForm setShowModal={setShowModal} />
               ) : null}
-
             </div>
           </div>
         </div>

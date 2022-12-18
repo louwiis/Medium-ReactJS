@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { useAuth } from "../../providers/AuthStore";
 
-function Navbar(props) {
+function LoginForm(props) {
   const { setToken, setUser } = useContext(useAuth);
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -83,4 +83,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default LoginForm;
