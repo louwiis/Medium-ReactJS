@@ -40,7 +40,7 @@ function DisplayMap() {
 
   return (
     location.pathname !== "/map" && user &&
-    <div className="h-[250px] w-[400px] absolute right-0 bottom-0">
+    <div className="h-[200px] w-[400px] absolute right-0 bottom-0">
       <Map />
     </div>
   )

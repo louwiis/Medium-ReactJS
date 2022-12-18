@@ -60,7 +60,6 @@ function Navbar(props) {
                   {...register("email", { required: true })}
                 />
                 {errors.email && <span className="text-red-500 text-xs italic">Please enter your email.</span>}
-
               </div>
               <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>

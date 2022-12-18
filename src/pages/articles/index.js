@@ -1,15 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { useArticle } from "../../providers/ArticleStore";
 
 function Articles() {
-  const { articles, decreasePagination, increasePagination, pages, setPagination } = useContext(useArticle);
-  
+  const { articles, decreasePagination, increasePagination, pages, setPagination, categories } = useContext(useArticle);
+  const [category, setCategory] = useState('all');
+
   return (
     <div>            
       <section className="text-gray-600 body-font">
         <div className="container mx-auto">
           <div className="w-full mx-auto overflow-auto">
+            <select className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block my-4 p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" onChange={(event) => setCategory(event.target.value)}>
+              <option value={'all'}>All categories</option>
+              {categories && categories.map((category, index) => (
+                <option value={category.name} key={index}>{category.name}</option>
+              ))}
+            </select>
             <table className="table-auto w-full text-left whitespace-no-wrap">
               <thead>
                 <tr>
@@ -18,7 +25,7 @@ function Articles() {
                 </tr>
               </thead>
               <tbody>
-              { articles && articles.map((article, index) => (
+                {articles.filter(article => article.ArticleCategory.name === category || category === 'all').map((article, index) => (
                   <tr key={index}>
                     <td className="border px-4 py-2 w-[200px] text-ellipsis">{article.User.firstname}</td>
                     <td className="border border-gray-200 flex w-full">
@@ -27,7 +34,7 @@ function Articles() {
                       </Link>
                     </td>
                   </tr>
-              ))}   
+                ))}
               </tbody>
             </table>
           </div>
