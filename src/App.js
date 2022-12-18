@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
+import { useContext } from "react";
+
+import Navbar from "./components/Navbar";
+import Articles from "./pages/articles/index";
+import Article from "./pages/articles/_id";
+import MapPage from "./pages/map";
+import Map from "./components/Map";
+
+import { LocationProvider } from "./providers/LocationStore"
+import { AuthProvider, useAuth } from "./providers/AuthStore"
+import { ArticleProvider } from "./providers/ArticleStore";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <LocationProvider>
+        <ArticleProvider>
+          <BrowserRouter className="h-screen">
+            <Navbar />
+
+            <Routes>
+              <Route path="/map" element={<MapPage />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/articles/:id" element={<Article />} />
+            </Routes>
+
+            <DisplayMap />
+          </BrowserRouter>
+        </ArticleProvider>
+      </LocationProvider>
+    </AuthProvider>
   );
+}
+
+function DisplayMap() {
+  const location = useLocation();
+  const { user } = useContext(useAuth);
+
+  return (
+    location.pathname !== "/map" && user &&
+    <div className="h-[250px] w-[400px] absolute right-0 bottom-0">
+      <Map />
+    </div>
+  )
 }
 
 export default App;
